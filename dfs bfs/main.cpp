@@ -1,23 +1,23 @@
-    #include <bits/stdc++.h>
+#include <bits/stdc++.h>
 
-    using namespace std;
-    #define uli unsigned long long int
-    #define lli long long int
-    #define Lf long double
-    #define mod 1000000007
-    #define SIZE 21
-    #define vi vector<int>
-    #define vl vector<long>
-    #define vll vector<long long>
-    #define vc vector<char>
-    #define ii <int, int>
-    #define ll <long, long>
-    #define lll <long long, long long>
-    #define loop(i,n) for(int i=0;i<n;i++)
-    #define loopr(i,n) for(int i=n-1;i>=0;i--)
+using namespace std;
+#define uli unsigned long long int
+#define lli long long int
+#define Lf long double
+#define mod 1000000007
+#define SIZE 21
+#define vi vector<int>
+#define vl vector<long>
+#define vll vector<long long>
+#define vc vector<char>
+#define ii <int, int>
+#define ll <long, long>
+#define lll <long long, long long>
+#define loop(i,n) for(int i=0;i<n;i++)
+#define loopr(i,n) for(int i=n-1;i>=0;i--)
 
     vi v[10];
-    int visited[10]={0},dist[10];
+    int visited[10],dist[10];
     queue<int> q;
 
 
@@ -54,7 +54,8 @@ void bipart(int n,int x){
     for(int u:v[x])
     {
         dfs(n,u);
-    }}
+    }
+    }
 
 
      }

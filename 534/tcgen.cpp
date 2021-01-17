@@ -8,7 +8,7 @@ typedef pair<int,int> pii;
 typedef vector<int> vi;
 #define fastIO  std::ios::sync_with_stdio(false);cin.tie(NULL)
 #define mod 1000000007
-#define N 5005
+#define N 100005
 #define NN 2005
 #define SZ(x) ((int) (x).size())
 #define all(x) (x).begin(), (x).end()
@@ -85,7 +85,7 @@ inline lli modnCr(lli fac[], int n, int r, lli p=mod)
  
 template <typename T>
 void printArr(T *arr, int s, int n){
-    for(int i=s;i<n;i++){
+    for(int i=s;i<=n;i++){
  
         cout<<arr[i]<<" ";
     }cout<<endl;
@@ -311,20 +311,9 @@ void printArr(T *arr, int s, int n){
 //}
 //
  
-// int spf[N];
-// void sieve2(int n)
-// {
-//     for (int i=1; i<=n; i++)
-//         spf[i] = i;
-//     for (int i=2; i*i<=n; i++)
-//         if (spf[i] == i)
-//             for (int j=i*i; j<=n; j+=i)
-//                 if (spf[j]==j) spf[j] = i;
-// }
-
-// vector<pair<lli,int>> v;
-// void primeFactors(lli n)
-// {
+//vector<pair<lli,int>> v;
+//void primeFactors(lli n)
+//{
 //    v.clear();
 //    int c=0;
 //    while (n % 2 == 0)
@@ -333,38 +322,22 @@ void printArr(T *arr, int s, int n){
 //        c++;
 //    }
 //    if(c>0) v.pb({2,c});
-
-
+//
+//
 //    for (lli i = 3; i*i <= n; i = i + 2)
 //    {   c=0;
-
+//
 //        while (n % i == 0)
 //        {
 //            n = n/i;
 //            c++;
 //        }
 //        if(c>0)v.pb({i,c});
-
+//
 //    }
 //    if (n > 2)
 //        v.pb({n,1});
-// }
-
-
-// vector<int> v;
-// int primeFactor(int n){
-//     int rr = 1;
-//     while(n>1){
-//         int x = spf[n];
-//         int c=0;
-//         while(n%x==0){
-//             c++;
-//             n/=x;
-//         }
-//         if(c%2) rr*=x;
-//     }
-//     return rr;
-// }
+//}
  
 // lli fac_[N];
 // void fac_init(int n){
@@ -381,47 +354,31 @@ for( int inum = 0 ; inum < ( 1 << n ) ; ++ inum ) {
      }
 }
 */
-lli d[N][2][2];
-vector<pair<int,lli>> adj[N];
-void dijkstra(int s) {
-   d[s][0][0] = 0;
-   set<pair<lli, array<int,3>>> q;
-   q.insert({0, {1,0,0}});
-   while (!q.empty()) {
-       auto [v, mx, mn] = q.begin()->second;
-       q.erase(q.begin());
-       for (auto [to, len] : adj[v]) {
-           loop(i,0,1-mx+1){
-               loop(j,0,1-mn+1){
-                   if (d[v][mx][mn] + len*(1-i+j) < d[to][mx|i][mn|j]) {
-                        q.erase({d[to][mx|i][mn|j], {to, mx|i,mn|j}});
-                        d[to][mx|i][mn|j] = d[v][mx][mn] + len*(1-i+j);
-                        q.insert({d[to][mx|i][mn|j], {to, mx|i,mn|j}});
-                    }
-               }
-           }
-       }
-   }
-}
+
+// int spf[N];
+// void sieve2(int n)
+// {
+// 	for (int i=1; i<=n; i++)
+// 		spf[i] = i;
+
+// 	for (long long i=2; i<=n; i++)
+// 		if (spf[i] == i)
+// 			for (long long j=i*i; j<=n; j+=i)
+// 				if (spf[j]==j) spf[j] = i;
+
+//     for(int i=2;i<=n;i++) a[i]=a[i-1]+(spf[i]==i);
+// }
 
 int main(){
     fastIO;
     int erer=1;
     // cin>>erer;
     loop(erer2,1,erer+1){
-        int n,m;
-        cin>>n>>m;
-        int x,y,w;
-        loop(o,0,m){
-            cin>>x>>y>>w;
-            adj[x].pb({y,w});
-            adj[y].pb({x,w});
-        }
-
-        loop(i,0,n+1) loop(j,0,2) loop(k,0,2) d[i][j][k]=LLONG_MAX;
-        dijkstra(1);
-        loop(i,2,n+1) cout<<d[i][1][1]<<" ";cl;
-
-    }       
+        int n = 100;
+        cout<<n<<endl;
+        srand(time(0));
+        loop(i,0,n)
+        cout<<rand()*rand()<<endl;
+    }   
     return 0;
 }

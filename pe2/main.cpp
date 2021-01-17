@@ -2,33 +2,42 @@
 
 using namespace std;
 #include<vector>
-int main()
-{vector<int> v; int t,n,j,ans=1,p;
-    cin>>t;
-    for(int o=0;o<t;o++)
-    {ans=1; v.clear();
-        cin>>n;
-        for(int i=2;i<=n;i++)
-          {for(j=2;j<=i/2;j++)
-           if(i%j==0) break;
-        if(i==2) v.push_back(2);
-        if(i%j!=0) v.push_back(i);
-          }
 
-      for(int i=0;i<v.size();i++)
-      {
-          p=v[i];
-            while(p*v[i]<=n)
-            {p=p*v[i];
-            }
-            v[i]=p;
-      }
-
-        for(int i=0;i<v.size();i++)
+// Multiplies two matrices mat1[][]
+// and mat2[][] and prints result.
+// (m1) x (m2) and (n1) x (n2) are
+// dimensions of given matrices.
+void multiply(int m1, int m2, int mat1[][2],
+              int n1, int n2, int mat2[][2])
+{
+    int x, i, j;
+    int res[m1][n2];
+    for (i = 0; i < m1; i++)
+    {
+        for (j = 0; j < n2; j++)
         {
-            ans=ans*v[i];
-        }
-        cout<<ans<<endl;
+            res[i][j] = 0;
+            for (x = 0; x < m2; x++)
+            {
+                *(*(res + i) + j) += *(*(mat1 + i) + x) *
+                                     *(*(mat2 + x) + j);
             }
+        }
+    }
+    for (i = 0; i < m1; i++)
+    {
+        for (j = 0; j < n2; j++)
+        {
+            cout << *(*(res + i) + j) << " ";
+        }
+        cout << "\n";
+    }
+}
+
+
+
+int main()
+{
+
     return 0;
 }
